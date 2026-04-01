@@ -1,0 +1,54 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: lms-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Your_password123!"
+      MSSQL_SA_PASSWORD: "Your_password123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  redis:
+    image: redis:7-alpine
+    container_name: lms-redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: lms-api
+    depends_on:
+      - sqlserver
+      - redis
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=LeadManagement;User Id=sa;Password=Your_password123!;TrustServerCertificate=True;"
+      ConnectionStrings__Redis: "redis:6379"
+      Jwt__Key: "LeadManagement-Super-Secret-Key-32chars+"
+      Jwt__Issuer: "LeadManagement"
+      Jwt__Audience: "LeadManagementClients"
+      Jwt__ExpireMinutes: "240"
+      Cors__Origins__0: "http://localhost:3000"
+      Cors__Origins__1: "http://127.0.0.1:3000"
+    ports:
+      - "5000:8080"
+
+  frontend:
+    build:
+      context: ./LeadManagement
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: "http://localhost:5000/api"
+    container_name: lms-web
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  sql_data:

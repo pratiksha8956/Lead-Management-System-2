@@ -1,0 +1,15 @@
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.csproj.AssemblyReference.cache
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.AssemblyInfoInputs.cache
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.AssemblyInfo.cs
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\bin\Debug\net8.0\LeadManagement.Application.deps.json
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\bin\Debug\net8.0\LeadManagement.Application.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\bin\Debug\net8.0\LeadManagement.Application.pdb
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\bin\Debug\net8.0\LeadManagement.Domain.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\bin\Debug\net8.0\LeadManagement.Domain.pdb
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadMana.4750CB90.Up2Date
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\refint\LeadManagement.Application.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.pdb
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\ref\LeadManagement.Application.dll

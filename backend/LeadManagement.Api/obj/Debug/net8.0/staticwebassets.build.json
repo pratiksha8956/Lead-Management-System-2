@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ruC+ICtldlP+icDrOR4DHncRwL453dUjpaZhT885RY4=",
+  "Source": "LeadManagement.Api",
+  "BasePath": "_content/LeadManagement.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

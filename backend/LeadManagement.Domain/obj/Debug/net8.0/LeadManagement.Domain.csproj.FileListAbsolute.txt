@@ -1,0 +1,11 @@
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\bin\Debug\net8.0\LeadManagement.Domain.deps.json
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\bin\Debug\net8.0\LeadManagement.Domain.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\bin\Debug\net8.0\LeadManagement.Domain.pdb
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.AssemblyInfo.cs
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\refint\LeadManagement.Domain.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.pdb
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\ref\LeadManagement.Domain.dll
