@@ -12,7 +12,7 @@ RUN dotnet restore LeadManagement.Api/LeadManagement.Api.csproj
 
 COPY . .
 WORKDIR /src/LeadManagement.Api
-RUN dotnet publish -c Release -o /app/publish --no-restore
+RUN dotnet publish -c Release -o /app/publish   # ✅ FIXED
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app

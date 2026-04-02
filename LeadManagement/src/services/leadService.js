@@ -1,15 +1,17 @@
 import api from "./api";
 
+// 🔐 AUTH
 export const loginUser = async (credentials) => {
-  const { data } = await api.post("/auth/login", {
+  const res = await api.post("/auth/login", {
     email: credentials.email,
     password: credentials.password
   });
-  return data;
+  return res.data;
 };
 
+// 📋 GET ALL LEADS
 export const getLeads = async (params = {}) => {
-  const { data } = await api.get("/leads", {
+  const res = await api.get("/leads", {
     params: {
       page: params.page,
       limit: params.limit,
@@ -17,26 +19,29 @@ export const getLeads = async (params = {}) => {
       source: params.source || undefined
     }
   });
-  return data;
+  return res.data;
 };
 
+// 📄 GET ONE LEAD
 export const getLeadById = async (id) => {
-  const { data } = await api.get(`/leads/${id}`);
-  return data;
+  const res = await api.get(`/leads/${id}`);
+  return res.data;
 };
 
+// 💬 INTERACTIONS
 export const getLeadInteractions = async (leadId) => {
-  const { data } = await api.get(`/leads/${leadId}/interactions`);
-  return data;
+  const res = await api.get(`/leads/${leadId}/interactions`);
+  return res.data;
 };
 
 export const addLeadInteraction = async (leadId, payload) => {
-  const { data } = await api.post(`/leads/${leadId}/interactions`, payload);
-  return data;
+  const res = await api.post(`/leads/${leadId}/interactions`, payload);
+  return res.data;
 };
 
+// ➕ CREATE LEAD (FIXED)
 export const createLead = async (payload) => {
-  const { data } = await api.post("/leads", {
+  const res = await api.post("/leads", {
     name: payload.name,
     email: payload.email,
     phone: payload.phone,
@@ -46,11 +51,14 @@ export const createLead = async (payload) => {
     priority: payload.priority,
     assignedSalesRepId: payload.assignedSalesRepId ?? null
   });
-  return data;
+
+  // ✅ Always return something valid
+  return res.data || { success: true };
 };
 
+// ✏️ UPDATE LEAD (FIXED)
 export const updateLead = async (id, payload) => {
-  const { data } = await api.put(`/leads/${id}`, {
+  const res = await api.put(`/leads/${id}`, {
     name: payload.name,
     email: payload.email,
     phone: payload.phone,
@@ -61,19 +69,23 @@ export const updateLead = async (id, payload) => {
     priority: payload.priority,
     assignedSalesRepId: payload.assignedSalesRepId ?? null
   });
-  return data;
+
+  return res.data || { success: true };
 };
 
+// ❌ DELETE LEAD (FIXED)
 export const deleteLead = async (id) => {
   await api.delete(`/leads/${id}`);
   return { success: true };
 };
 
+// 🔄 CONVERT LEAD
 export const convertLead = async (id) => {
-  const { data } = await api.post(`/leads/${id}/convert`);
-  return data;
+  const res = await api.post(`/leads/${id}/convert`);
+  return res.data || { success: true };
 };
 
+// 📊 ANALYTICS
 export const getLeadAnalytics = async () => {
   const [byStatus, bySource, rateRes, bySalesRep] = await Promise.all([
     api.get("/analytics/by-status"),

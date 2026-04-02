@@ -158,3 +158,4 @@ C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Api\obj\Debug\net8.0
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Api\obj\Debug\net8.0\LeadManagement.Api.pdb
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Api\obj\Debug\net8.0\LeadManagement.Api.genruntimeconfig.cache
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Api\obj\Debug\net8.0\ref\LeadManagement.Api.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Api\obj\Debug\net8.0\LeadManagement.Api.sourcelink.json

@@ -13,3 +13,4 @@ C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debu
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\refint\LeadManagement.Application.dll
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.pdb
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\ref\LeadManagement.Application.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Application\obj\Debug\net8.0\LeadManagement.Application.sourcelink.json

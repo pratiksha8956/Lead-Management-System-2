@@ -9,3 +9,4 @@ C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\refint\LeadManagement.Domain.dll
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.pdb
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\ref\LeadManagement.Domain.dll
+C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Domain\obj\Debug\net8.0\LeadManagement.Domain.sourcelink.json

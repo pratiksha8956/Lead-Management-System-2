@@ -19,10 +19,14 @@ const initialForm = {
   priority: "Medium"
 };
 
+// ✅ ALL STATUS OPTIONS
+const ALL_STATUS = ["New", "Contacted", "Qualified", "Lost", "Converted"];
+
 function LeadFormPage({ mode, setToast }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEdit = mode === "edit";
+
   const [form, setForm] = useState(initialForm);
   const [originalStatus, setOriginalStatus] = useState("New");
   const [errors, setErrors] = useState({});
@@ -49,7 +53,12 @@ function LeadFormPage({ mode, setToast }) {
     fetchLead();
   }, [id, isEdit, navigate, setToast]);
 
-  const statusOptions = useMemo(() => (isEdit ? getAllowedTransitions(originalStatus) : ["New"]), [isEdit, originalStatus]);
+  // ✅ FIXED STATUS OPTIONS
+  const statusOptions = useMemo(
+    () => (isEdit ? getAllowedTransitions(originalStatus) : ALL_STATUS),
+    [isEdit, originalStatus]
+  );
+
   const title = useMemo(() => (isEdit ? "Edit Lead" : "Create Lead"), [isEdit]);
 
   const validate = () => {
@@ -60,9 +69,11 @@ function LeadFormPage({ mode, setToast }) {
     if (!form.phone.trim()) nextErrors.phone = "Phone is required";
     if (!form.company.trim()) nextErrors.company = "Company is required";
     if (!form.position.trim()) nextErrors.position = "Position is required";
+
     if (isEdit && !isValidTransition(originalStatus, form.status)) {
       nextErrors.status = `Invalid status transition from ${originalStatus} to ${form.status}`;
     }
+
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
@@ -75,21 +86,30 @@ function LeadFormPage({ mode, setToast }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+
     setSubmitting(true);
 
     try {
       if (isEdit) {
         await updateLead(id, form);
-        setToast({ show: true, type: "success", message: "Lead updated successfully" });
       } else {
         await createLead(form);
-        setToast({ show: true, type: "success", message: "Lead created successfully" });
       }
+
+      setToast({
+        show: true,
+        type: "success",
+        message: isEdit ? "Lead updated successfully" : "Lead created successfully"
+      });
+
       navigate("/leads");
+
     } catch (err) {
-      const message = getErrorMessage(err, "Save failed");
-      setErrors((prev) => ({ ...prev, api: message }));
-      setToast({ show: true, type: "error", message });
+      if (err?.response?.status >= 400) {
+        const message = getErrorMessage(err, "Save failed");
+        setErrors((prev) => ({ ...prev, api: message }));
+        setToast({ show: true, type: "error", message });
+      }
     } finally {
       setSubmitting(false);
     }
@@ -100,6 +120,7 @@ function LeadFormPage({ mode, setToast }) {
   return (
     <section className="card">
       <h2>{title}</h2>
+
       {errors.api && <div className="error-banner">{errors.api}</div>}
 
       <form className="form-grid" onSubmit={handleSubmit}>
@@ -145,7 +166,10 @@ function LeadFormPage({ mode, setToast }) {
           <Button type="submit" disabled={submitting || originalStatus === "Converted"}>
             {submitting ? "Saving..." : isEdit ? "Update Lead" : "Create Lead"}
           </Button>
-          <Button variant="secondary" type="button" onClick={() => navigate("/leads")}>Cancel</Button>
+
+          <Button variant="secondary" type="button" onClick={() => navigate("/leads")}>
+            Cancel
+          </Button>
         </div>
       </form>
     </section>
