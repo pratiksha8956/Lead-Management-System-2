@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -28,19 +30,24 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=LeadManagementDB;User Id=sa;Password=Your_password123!;TrustServerCertificate=True;"
       ConnectionStrings__Redis: "redis:6379"
+      Jwt__Key: "LeadManagement-Super-Secret-Key-32chars+"
+      Jwt__Issuer: "LeadManagement"
+      Jwt__Audience: "LeadManagementClients"
+      Jwt__ExpireMinutes: "240"
+      Cors__Origins__0: "http://localhost:3000"
+      Cors__Origins__1: "http://127.0.0.1:3000"
     ports:
       - "5000:8080"
-    restart: always
+    restart: always   # 🔥 IMPORTANT (auto restart if SQL not ready)
 
   frontend:
     build:
       context: ./LeadManagement
       dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: "http://localhost:5000/api"
     container_name: lms-web
     depends_on:
       - backend
     ports:
       - "3000:80"
-
-volumes:
-  sql_data:

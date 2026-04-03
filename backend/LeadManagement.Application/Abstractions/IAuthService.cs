@@ -4,6 +4,8 @@ namespace LeadManagement.Application.Abstractions;
 
 public interface IAuthService
 {
+    Task RegisterAsync(string email, string password, string displayName, CancellationToken cancellationToken = default);
+
     Task<LoginResponse?> LoginAsync(string email, string password, CancellationToken cancellationToken = default);
 }
 

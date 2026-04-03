@@ -19,6 +19,28 @@ public class AuthController : ControllerBase
 
     public record LoginRequest(string Email, string Password);
 
+    public record RegisterRequest(string Email, string Password, string DisplayName);
+
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterRequest request, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(request.Email) ||
+            string.IsNullOrWhiteSpace(request.Password) ||
+            string.IsNullOrWhiteSpace(request.DisplayName))
+            return BadRequest(new { message = "Email, password, and name are required." });
+
+        try
+        {
+            await _auth.RegisterAsync(request.Email, request.Password, request.DisplayName, cancellationToken);
+            return Ok(new { message = "Registration successful. You can sign in now." });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
+    }
+
     [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request, CancellationToken cancellationToken)

@@ -12,8 +12,8 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const url = config.url || "";
 
-  // Skip token for login
-  if (url.includes("auth/login")) {
+  // Skip token for public auth routes
+  if (url.includes("auth/login") || url.includes("auth/register")) {
     return config;
   }
 
@@ -23,7 +23,9 @@ api.interceptors.request.use((config) => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    if (!window.location.pathname.includes("/login")) {
+    const path = window.location.pathname;
+    const isPublicAuth = path.includes("/login") || path.includes("/register");
+    if (!isPublicAuth) {
       window.location.href = "/login";
     }
 
@@ -46,7 +48,8 @@ api.interceptors.response.use(
       localStorage.removeItem("token");
       localStorage.removeItem("user");
 
-      if (!window.location.pathname.includes("/login")) {
+      const path = window.location.pathname;
+      if (!path.includes("/login") && !path.includes("/register")) {
         window.location.href = "/login";
       }
     }

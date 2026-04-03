@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Spinner from "../components/Spinner";
@@ -10,10 +10,19 @@ import "../styles/auth.css";
 
 function LoginPage({ setToast }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [info, setInfo] = useState("");
+
+  useEffect(() => {
+    if (location.state?.fromRegistration) {
+      setInfo("Registration complete. Sign in with your new account.");
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +36,10 @@ function LoginPage({ setToast }) {
 
     try {
       const response = await loginUser(form);
+      if (!response?.token) {
+        setError("Invalid credentials");
+        return;
+      }
       const token = response.token;
       const u = response.user || {};
       const user = {
@@ -39,7 +52,7 @@ function LoginPage({ setToast }) {
 
       login({ token, user });
       setToast({ show: true, type: "success", message: "Login successful" });
-      navigate("/leads");
+      navigate("/leads", { replace: true });
     } catch (err) {
       setError(getErrorMessage(err, "Invalid credentials"));
     } finally {
@@ -52,8 +65,8 @@ function LoginPage({ setToast }) {
       <div className="auth-card card">
         <h1>Login</h1>
         <p>Sign in to manage your leads</p>
-        <p className="info-note">Demo: admin@demo.com / admin123, manager@demo.com / manager123, sales@demo.com / sales123</p>
 
+        {info && <div className="info-banner">{info}</div>}
         {error && <div className="error-banner">{error}</div>}
 
         <form onSubmit={handleSubmit} className="form-grid">
@@ -62,6 +75,10 @@ function LoginPage({ setToast }) {
 
           <Button type="submit" disabled={loading}>{loading ? "Logging in..." : "Login"}</Button>
         </form>
+
+        <p className="auth-switch">
+          New here? <Link to="/register">Create an account</Link>
+        </p>
 
         {loading && <Spinner message="Authenticating..." />}
       </div>

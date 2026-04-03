@@ -174,3 +174,4 @@ C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Tests\obj\Debug\net8
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Tests\obj\Debug\net8.0\LeadManagement.Tests.pdb
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Tests\obj\Debug\net8.0\LeadManagement.Tests.genruntimeconfig.cache
 C:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Tests\obj\Debug\net8.0\ref\LeadManagement.Tests.dll
+c:\Users\Pratiksha\LeadManagementSys\backend\LeadManagement.Tests\obj\Debug\net8.0\LeadManagement.Tests.sourcelink.json

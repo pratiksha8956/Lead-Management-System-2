@@ -6,6 +6,25 @@ export const loginUser = async (credentials) => {
     email: credentials.email,
     password: credentials.password
   });
+  if (res.status >= 400) {
+    const err = new Error(res.data?.message || "Login failed");
+    err.response = res;
+    throw err;
+  }
+  return res.data;
+};
+
+export const registerUser = async ({ email, password, displayName }) => {
+  const res = await api.post("/auth/register", {
+    email,
+    password,
+    displayName
+  });
+  if (res.status >= 400) {
+    const err = new Error(res.data?.message || "Registration failed");
+    err.response = res;
+    throw err;
+  }
   return res.data;
 };
 

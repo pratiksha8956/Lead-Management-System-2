@@ -9,6 +9,7 @@ import LeadDetailPage from "./pages/LeadDetailPage";
 import LeadFormPage from "./pages/LeadFormPage";
 import LeadListPage from "./pages/LeadListPage";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   const { token } = useAuth();
@@ -18,6 +19,7 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={token ? <Navigate to="/leads" replace /> : <LoginPage setToast={setToast} />} />
+        <Route path="/register" element={token ? <Navigate to="/leads" replace /> : <RegisterPage setToast={setToast} />} />
         <Route
           path="/*"
           element={
