@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeadManagement.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f02af3bd7c3d2aaa853fb15d1047d3c372950402")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+402df5be948cfe677646076ca8ab1d8d53db9bc2")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeadManagement.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeadManagement.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
